@@ -1,6 +1,5 @@
 package com.zubiri.checkbox;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,12 +14,10 @@ import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.ButtonGroup;
 
 public class CheckBox extends JFrame {
 
 	private JPanel contentPane;
-	//private final ButtonGroup buttonGroup = new ButtonGroup();
 	private List<JCheckBox> buttonGroup = new ArrayList<JCheckBox>();
 
 	/**
