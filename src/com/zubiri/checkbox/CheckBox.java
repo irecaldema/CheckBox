@@ -9,14 +9,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.ButtonGroup;
 
 public class CheckBox extends JFrame {
 
 	private JPanel contentPane;
-	private final ButtonGroup buttonGroup = new ButtonGroup();
+	//private final ButtonGroup buttonGroup = new ButtonGroup();
+	private List<JCheckBox> buttonGroup = new ArrayList<JCheckBox>();
 
 	/**
 	 * Launch the application.
@@ -86,16 +91,12 @@ public class CheckBox extends JFrame {
 		btnSeleccionar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblNewLabel.setText("");
-				if(chckbxTenis.isSelected()){
-					lblNewLabel.setText(lblNewLabel.getText()+chckbxTenis.getText());
-				}else if(chckbxFutbol.isSelected()){
-					lblNewLabel.setText(lblNewLabel.getText()+chckbxFutbol.getText());
-				}else if(chckbxBaloncesto.isSelected()){
-					lblNewLabel.setText(lblNewLabel.getText()+chckbxBaloncesto.getText());
-				}else if(chckbxCiclismo.isSelected()){
-					lblNewLabel.setText(lblNewLabel.getText()+chckbxCiclismo.getText());
-				}
-				
+			    for (JCheckBox checkBox : buttonGroup) {
+			        if (checkBox.isSelected()) {
+			            System.out.print(" "+checkBox.getText());
+			            lblNewLabel.setText(lblNewLabel.getText()+" "+checkBox.getText());
+			        }
+			    }				
 			}
 		});
 		btnSeleccionar.setBounds(180, 195, 117, 25);
@@ -104,11 +105,12 @@ public class CheckBox extends JFrame {
 		JButton btnCancelar = new JButton("cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			   /* for (JCheckBox checkBox : buttonGroup) {
+			    for (JCheckBox checkBox : buttonGroup) {
 			        if (checkBox.isSelected()) {
 			        	checkBox.setSelected(false);
+			        	lblNewLabel.setText("...");
 			        }
-			    }*/
+			    }
 			}
 		});
 		btnCancelar.setBounds(319, 195, 117, 25);
